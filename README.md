@@ -1,6 +1,6 @@
-# Cart for One: Ebook Website
+# Cart for One with Bev: Channel Website
 
-The sales page for **Cart for One**, the ebook from the YouTube channel *Cart for One with Bev*. It's a single `index.html` file with images in `assets/`. There's no build step, so it can be hosted anywhere for free.
+The home page for the YouTube channel *Cart for One with Bev*: episodes, Bev's receipts, her rules, the weekly errands and the **Cart for One** ebook. It's a single `index.html` file with images in `assets/`. There's no build step, so it can be hosted anywhere for free.
 
 Live site (GitHub Pages): https://zohaibhassan21.github.io/Opnet-token/
 Buy link (Gumroad): https://zohaibh0.gumroad.com/l/cart-for-one
@@ -11,7 +11,7 @@ At the bottom of `index.html`:
 
 ```js
 const BOOK = {
-  price: "$12",
+  price: "$19",
   buyUrl: "https://zohaibh0.gumroad.com/l/cart-for-one",
   youtubeUrl: "https://www.youtube.com/..."   // your channel link
 };
@@ -37,4 +37,4 @@ GitHub Pages: Settings → Pages → Deploy from a branch → select this branch
 
 ## Originality
 
-All design, code, text and illustrations are original. Fonts are free Google Fonts (Fraunces, Lexend, IBM Plex Mono) under the SIL Open Font License. Bev is a fictional AI presenter, and the site says so.
+All design, code, text and illustrations are original. Fonts are free Google Fonts (Fraunces, Lexend, IBM Plex Mono) under the SIL Open Font License. Bev is the host character of the channel, and the site says so in the footer.
