@@ -57,7 +57,7 @@ Search `index.html` for these and change them:
 
 ## 4. Change colours
 
-Edit the variables at the top of the `<style>` block (`--marigold` is the button colour and `--ink` is the text and dark band colour). Dark-mode colours are defined just below them.
+Edit the variables at the top of the `<style>` block (`--marigold` is the button colour and `--ink` is the main text colour, `--band` is the tinted section background). The site always uses the light theme.
 
 ## Hosting (free)
 

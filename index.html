@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Balcony Harvest</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f8f6fb">
 <meta name="description" content="The Balcony Harvest: an ebook for growing real food in small spaces. 21 chapters, 40 plant profiles and 12 printable planners. Instant PDF + EPUB download.">
 <meta property="og:title" content="The Balcony Harvest">
 <meta property="og:description" content="Grow a real harvest on a balcony the size of a parking space.">
@@ -24,28 +26,18 @@
   --marigold:#e8a317;   /* the one loud colour: buy buttons, sun */
   --marigold-ink:#2a1c05;
   --leaf:#3e7c4f;       /* small botanical accents only */
-  --band:#261a33;       /* dark band background */
-  --band-fg:#f4eff8;
-  --band-muted:#c3b7d1;
+  --band:#f1ebf7;       /* soft lilac band background */
+  --band-fg:#261a33;
+  --band-muted:#5f5570;
+  --band-line:#dcd2e8;
   --shadow:0 1px 2px rgba(38,26,51,.06),0 12px 32px -12px rgba(38,26,51,.22);
+  color-scheme:light;   /* always light, even when the visitor's device is in dark mode */
   --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
   --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   --gutter-l:max(16px,env(safe-area-inset-left,0px));
   --gutter-r:max(16px,env(safe-area-inset-right,0px));
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#16101d;--surface:#211a2b;--ink:#f1ecf6;--muted:#b0a5bf;--line:#342a40;
-  --marigold:#f2b53a;--marigold-ink:#2a1c05;--leaf:#79c08b;
-  --band:#0f0a15;--band-fg:#f4eff8;--band-muted:#b9adc8;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
-  color-scheme:dark}}
-:root[data-theme="dark"]{
-  --paper:#16101d;--surface:#211a2b;--ink:#f1ecf6;--muted:#b0a5bf;--line:#342a40;
-  --marigold:#f2b53a;--marigold-ink:#2a1c05;--leaf:#79c08b;
-  --band:#0f0a15;--band-fg:#f4eff8;--band-muted:#b9adc8;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
-  color-scheme:dark}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
@@ -132,11 +124,11 @@ p{margin:0}
 
 /* Outcomes (dark band) */
 .band{background:var(--band);color:var(--band-fg)}
-.band .eyebrow{color:var(--marigold)}
+.band{border-block:1px solid var(--band-line)}
 .band .lede{color:var(--band-muted)}
 .learn{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 40px}
 .learn-item{display:flex;flex-direction:column;gap:10px}
-.learn-item svg{width:40px;height:40px;color:var(--marigold)}
+.learn-item svg{width:44px;height:44px;padding:9px;border-radius:12px;background:var(--surface);color:#c4870b;box-shadow:0 6px 16px -10px rgba(38,26,51,.35)}
 .learn-item p{color:var(--band-muted)}
 
 /* Contents */
@@ -228,7 +220,7 @@ p{margin:0}
 .guarantee b{color:var(--ink)}
 .formats{display:flex;flex-wrap:wrap;gap:8px}
 .formats span{font:500 .76rem/1 var(--f-mono);letter-spacing:.06em;border:1px solid var(--line);border-radius:6px;padding:7px 10px;color:var(--muted)}
-.band .formats span{border-color:rgba(255,255,255,.18);color:var(--band-muted)}
+.band .formats span{border-color:var(--band-line);color:var(--band-muted);background:var(--surface)}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
