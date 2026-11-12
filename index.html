@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Balcony Harvest</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="The Balcony Harvest: an ebook for growing real food in small spaces. 21 chapters, 40 plant profiles and 12 printable planners. Instant PDF + EPUB download.">
+<meta property="og:title" content="The Balcony Harvest">
+<meta property="og:description" content="Grow a real harvest on a balcony the size of a parking space.">
+<meta property="og:type" content="book">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23261a33'/%3E%3Ccircle cx='40' cy='24' r='10' fill='%23e8a317'/%3E%3Cpath d='M18 50c0-12 6-20 14-22-2 8-6 14-14 22z' fill='%235fae73'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: split hero with a drawn book cover, then alternating bands that walk the buyer from problem → contents → preview → author → checkout. */
+:root{
+  --paper:#f8f6fb;      /* page ground, a cool lilac white */
+  --surface:#ffffff;    /* cards and sheets */
+  --ink:#261a33;        /* aubergine text + dark bands */
+  --muted:#675d74;
+  --line:#e3dcea;
+  --marigold:#e8a317;   /* the one loud colour: buy buttons, sun */
+  --marigold-ink:#2a1c05;
+  --leaf:#3e7c4f;       /* small botanical accents only */
+  --band:#261a33;       /* dark band background */
+  --band-fg:#f4eff8;
+  --band-muted:#c3b7d1;
+  --shadow:0 1px 2px rgba(38,26,51,.06),0 12px 32px -12px rgba(38,26,51,.22);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#16101d;--surface:#211a2b;--ink:#f1ecf6;--muted:#b0a5bf;--line:#342a40;
+  --marigold:#f2b53a;--marigold-ink:#2a1c05;--leaf:#79c08b;
+  --band:#0f0a15;--band-fg:#f4eff8;--band-muted:#b9adc8;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16101d;--surface:#211a2b;--ink:#f1ecf6;--muted:#b0a5bf;--line:#342a40;
+  --marigold:#f2b53a;--marigold-ink:#2a1c05;--leaf:#79c08b;
+  --band:#0f0a15;--band-fg:#f4eff8;--band-muted:#b9adc8;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -16px rgba(0,0,0,.6);
+  color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:800}
+h2{font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:6px}
+
+.wrap{width:100%;max-width:1160px;margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.section{padding-block:clamp(64px,9vw,112px)}
+.eyebrow{font:500 .78rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.lede{font-size:1.2rem;color:var(--muted);max-width:60ch}
+.stack{display:flex;flex-direction:column;gap:20px}
+.head{display:flex;flex-direction:column;gap:16px;max-width:720px;margin-bottom:48px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 1.02rem/1 var(--f-body);text-decoration:none;padding:17px 26px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.btn-buy{background:var(--marigold);color:var(--marigold-ink);box-shadow:0 8px 22px -10px rgba(232,163,23,.9)}
+.btn-buy:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(232,163,23,.95)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn small{font:500 .9rem/1 var(--f-body);opacity:.75}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.12rem/1 var(--f-display);letter-spacing:-.02em}
+.brand-mark{width:30px;height:30px;flex:none}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{text-decoration:none;font-weight:600;font-size:.97rem;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:.95rem;color:var(--marigold-ink)}
+@media (max-width:760px){.nav a:not(.btn){display:none}}
+
+/* Hero */
+.hero{padding-block:clamp(48px,7vw,96px) clamp(56px,8vw,104px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,80px);align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--marigold) 55%,transparent) 62%);padding-inline:.05em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.fine{font-size:.92rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px}
+.fine span{display:inline-flex;align-items:center;gap:6px}
+.fine span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf)}
+
+/* Drawn book cover */
+.book-stage{display:grid;place-items:center;perspective:1400px;padding-block:12px}
+.book{position:relative;width:min(330px,78vw);aspect-ratio:2/3;max-width:100%;transform:rotateY(-18deg) rotateX(4deg);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.book:hover{transform:rotateY(-6deg) rotateX(2deg)}
+.cover{position:absolute;inset:0;border-radius:4px 10px 10px 4px;overflow:hidden;background:#2c1d3c;color:#fbf6ff;box-shadow:24px 28px 50px -18px rgba(20,10,30,.55),inset 6px 0 10px -6px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:space-between;padding:30px 26px 26px 34px}
+.cover::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.12)}
+.cover-sun{position:absolute;width:62%;aspect-ratio:1;border-radius:50%;background:#efab1f;right:-14%;top:16%}
+.cover-rail{position:absolute;left:0;right:0;bottom:26%;height:34%;background:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 3px,transparent 3px 22px);border-top:5px solid rgba(255,255,255,.22)}
+.cover-plants{position:absolute;left:8%;right:8%;bottom:20%;height:42%}
+.cover-top,.cover-bottom{position:relative;z-index:2}
+.cover-kicker{font:500 .62rem/1.4 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.cover-title{font:800 2.35rem/.95 var(--f-display);letter-spacing:-.03em;margin-top:10px}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;font:600 .78rem/1.3 var(--f-body);background:#2c1d3c;margin:0 -26px -26px -34px;padding:14px 26px 22px 34px}
+.cover-bottom b{font-family:var(--f-display);font-size:1rem}
+.book-pages{position:absolute;top:2%;bottom:2%;right:-12px;width:14px;transform:rotateY(80deg);transform-origin:left;background:repeating-linear-gradient(0deg,#f3eee6 0 2px,#ddd5c9 2px 3px);border-radius:0 3px 3px 0}
+.price-tag{position:absolute;z-index:3;right:-18px;top:-18px;width:86px;height:86px;border-radius:50%;background:var(--surface);color:var(--ink);display:grid;place-items:center;text-align:center;box-shadow:var(--shadow);transform:rotate(10deg) translateZ(30px);font:800 1.55rem/1 var(--f-display);border:2px dashed var(--marigold)}
+.price-tag small{display:block;font:500 .6rem/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+/* Stats strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;background:var(--surface);margin-top:clamp(48px,6vw,72px);overflow:hidden}
+.stat{padding:22px 24px;display:flex;flex-direction:column;gap:4px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{font:800 2.1rem/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.95rem}
+
+/* Problem cards */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pain{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.pain-quote{font:700 1.18rem/1.3 var(--f-display);letter-spacing:-.01em}
+.pain p{color:var(--muted)}
+.pain .fix{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-size:.95rem;color:var(--ink)}
+.pain .fix b{color:var(--leaf);font-family:var(--f-mono);font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}
+
+/* Outcomes (dark band) */
+.band{background:var(--band);color:var(--band-fg)}
+.band .eyebrow{color:var(--marigold)}
+.band .lede{color:var(--band-muted)}
+.learn{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 40px}
+.learn-item{display:flex;flex-direction:column;gap:10px}
+.learn-item svg{width:40px;height:40px;color:var(--marigold)}
+.learn-item p{color:var(--band-muted)}
+
+/* Contents */
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.part{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.part summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:22px 24px}
+.part summary::-webkit-details-marker{display:none}
+.part-num{font:800 1.6rem/1 var(--f-display);color:var(--leaf);min-width:1.8em}
+.part-title{display:flex;flex-direction:column;gap:2px;min-width:0}
+.part-title span{font-size:.9rem;color:var(--muted)}
+.chev{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .2s}
+.part[open] .chev{transform:rotate(45deg);background:var(--marigold);border-color:var(--marigold);color:var(--marigold-ink)}
+.part ol{margin:0;padding:4px 24px 22px;list-style:none;display:flex;flex-direction:column;gap:2px;counter-reset:none}
+.part li{display:grid;grid-template-columns:2.4em 1fr auto;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:.98rem}
+.part li .n{font:500 .85rem/1.6 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.part li .pg{font:500 .8rem/1.7 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.extra{border:1.5px dashed var(--line);border-radius:18px;padding:22px 24px;display:flex;flex-direction:column;gap:6px}
+.extra b{font:800 1.9rem/1 var(--f-display);color:var(--leaf)}
+.extra p{color:var(--muted);font-size:.95rem}
+
+/* Preview pages */
+.preview-scroller{display:grid;grid-auto-flow:column;grid-auto-columns:min(300px,78vw);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 26px;margin-inline:-4px}
+.page{scroll-snap-align:start;background:#fffdf8;color:#2b2233;border-radius:6px;aspect-ratio:8.5/11;box-shadow:var(--shadow);padding:26px 24px;display:flex;flex-direction:column;gap:10px;font-size:.62rem;line-height:1.5;border:1px solid rgba(43,34,51,.08);max-width:100%}
+.page-cap{display:flex;flex-direction:column;gap:2px;margin-top:12px}
+.page-cap b{font-size:.98rem}
+.page-cap span{color:var(--muted);font-size:.9rem}
+.page-item{display:flex;flex-direction:column}
+.pg-kicker{font:500 .5rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:#3e7c4f}
+.pg-h{font:800 1.35rem/1 var(--f-display);letter-spacing:-.02em}
+.pg-h2{font:700 .82rem/1.2 var(--f-display)}
+.pg-lines{display:flex;flex-direction:column;gap:5px}
+.pg-lines i{display:block;height:5px;border-radius:3px;background:#e7e1d8}
+.pg-lines i:nth-child(3n){width:84%}.pg-lines i:nth-child(4n){width:66%}
+.pg-box{background:#fbefd2;border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.pg-box b{font:500 .5rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#7a5307}
+.pg-table{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-family:var(--f-mono);font-size:.55rem}
+.pg-table dt{color:#7d7187}
+.pg-table dd{margin:0}
+.pg-cal{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.pg-cal div{border:1px solid #e7e1d8;border-radius:4px;padding:5px;min-height:42px;display:flex;flex-direction:column;gap:3px}
+.pg-cal b{font-size:.5rem;font-family:var(--f-mono)}
+.pg-cal i{display:block;height:4px;border-radius:2px}
+.dot-sow{background:#3e7c4f}.dot-move{background:#e8a317}.dot-pick{background:#a24a6b}
+.pg-legend{display:flex;gap:10px;font-family:var(--f-mono);font-size:.48rem}
+.pg-legend span{display:inline-flex;align-items:center;gap:4px}
+.pg-legend i{width:10px;height:4px;border-radius:2px;display:inline-block}
+.pg-check{display:flex;flex-direction:column;gap:6px}
+.pg-check span{display:flex;gap:8px;align-items:center}
+.pg-check span::before{content:"";width:10px;height:10px;border:1.2px solid #2b2233;border-radius:2px;flex:none}
+.pg-foot{margin-top:auto;display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.48rem;color:#9a8fa3}
+.scroll-hint{color:var(--muted);font-size:.92rem}
+
+/* Fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fit-col{border-radius:18px;padding:30px;display:flex;flex-direction:column;gap:16px}
+.fit-yes{background:color-mix(in srgb,var(--leaf) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--leaf) 30%,var(--line))}
+.fit-no{background:var(--surface);border:1px solid var(--line)}
+.fit ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.fit li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.fit li svg{width:20px;height:20px;margin-top:4px}
+.fit-yes svg{color:var(--leaf)}
+.fit-no svg{color:var(--muted)}
+
+/* Author */
+.author{display:grid;grid-template-columns:280px 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.portrait{aspect-ratio:4/5;border-radius:22px;background:linear-gradient(160deg,color-mix(in srgb,var(--leaf) 30%,var(--surface)),color-mix(in srgb,var(--marigold) 35%,var(--surface)));display:grid;place-items:center;position:relative;overflow:hidden;max-width:100%}
+.portrait span{font:800 5rem/1 var(--f-display);color:var(--ink);opacity:.85}
+.portrait small{position:absolute;bottom:14px;left:16px;right:16px;font:500 .7rem/1.3 var(--f-mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.author-copy{display:flex;flex-direction:column;gap:18px;max-width:64ch;min-width:0}
+.author-copy p{color:var(--muted)}
+.pull{font:700 1.35rem/1.35 var(--f-display);letter-spacing:-.01em;color:var(--ink);border-left:4px solid var(--marigold);padding-left:20px}
+.socials{display:flex;flex-wrap:wrap;gap:10px}
+.socials a{font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 16px;background:var(--surface)}
+.socials a:hover{border-color:var(--ink)}
+
+/* Buy */
+.buy-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.buy-card{background:var(--surface);color:var(--ink);border-radius:24px;padding:clamp(26px,4vw,40px);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:22px;border:1px solid var(--line)}
+.buy-price{display:flex;align-items:baseline;gap:12px}
+.buy-price b{font:800 4rem/1 var(--f-display);letter-spacing:-.04em}
+.buy-price span{color:var(--muted)}
+.buy-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.buy-card li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.buy-card li svg{width:20px;height:20px;color:var(--leaf);margin-top:4px}
+.buy-card .btn{width:100%;padding-block:20px;font-size:1.1rem}
+.guarantee{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;font-size:.95rem;color:var(--muted);padding-top:18px;border-top:1px solid var(--line)}
+.guarantee svg{width:44px;height:44px;color:var(--marigold)}
+.guarantee b{color:var(--ink)}
+.formats{display:flex;flex-wrap:wrap;gap:8px}
+.formats span{font:500 .76rem/1 var(--f-mono);letter-spacing:.06em;border:1px solid var(--line);border-radius:6px;padding:7px 10px;color:var(--muted)}
+.band .formats span{border-color:rgba(255,255,255,.18);color:var(--band-muted)}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:22px 0;font:700 1.12rem/1.3 var(--f-display);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 1.6rem/1 var(--f-body);color:var(--muted);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:22px;color:var(--muted);max-width:62ch}
+
+/* Sample chapter signup */
+.sample{background:color-mix(in srgb,var(--marigold) 18%,var(--paper));border-radius:28px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.sample p{color:var(--muted)}
+.signup{display:flex;flex-direction:column;gap:10px}
+.signup-row{display:flex;gap:10px;flex-wrap:wrap}
+.signup input{flex:1 1 220px;min-width:0;font:500 1rem/1 var(--f-body);padding:16px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.signup input:focus{outline:none;border-color:var(--ink)}
+.signup .note{font-size:.88rem;color:var(--muted);min-height:1.4em}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:.93rem}
+.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;align-items:center}
+.site-footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.site-footer a{text-decoration:none}
+.site-footer a:hover{color:var(--ink)}
+
+/* Mobile sticky buy bar */
+.mbar{display:none}
+@media (max-width:760px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:12px;align-items:center;justify-content:space-between;background:var(--surface);border-top:1px solid var(--line);padding:12px var(--gutter-r) calc(12px + env(safe-area-inset-bottom,0px)) var(--gutter-l);box-shadow:0 -8px 24px -16px rgba(0,0,0,.35)}
+  .mbar div{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+  .mbar b{font-family:var(--f-display)}
+  .mbar span{font-size:.82rem;color:var(--muted)}
+  .mbar .btn{padding:13px 20px}
+  body{padding-bottom:78px}
+}
+
+/* Responsive */
+@media (max-width:960px){
+  .hero-grid,.buy-wrap,.faq,.sample{grid-template-columns:1fr}
+  .book-stage{order:-1}
+  .learn,.pains{grid-template-columns:1fr 1fr}
+  .author{grid-template-columns:200px 1fr}
+}
+@media (max-width:760px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .toc-grid,.extras,.fit,.learn,.pains{grid-template-columns:1fr}
+  .author{grid-template-columns:1fr}
+  .portrait{max-width:220px}
+  .book{width:min(260px,66vw)}
+  .price-tag{right:-8px;top:-14px;width:74px;height:74px;font-size:1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="The Balcony Harvest, back to top">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#261a33"/><circle cx="40" cy="24" r="10" fill="#e8a317"/><path d="M18 50c0-12 6-20 14-22-2 8-6 14-14 22z" fill="#5fae73"/></svg>
+      The Balcony Harvest
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#inside">What’s inside</a>
+      <a href="#preview">Preview</a>
+      <a href="#author">Author</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-buy" data-buy href="https://gumroad.com/">Buy · <span data-price>$19</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">A new ebook by R. Linden</span>
+        <h1>Grow a real harvest on a balcony the size of a <em>parking space</em>.</h1>
+        <p class="lede">Most gardening books assume you have a backyard. This one assumes you have six pots, four hours of sun and a landlord. It shows you exactly what to plant, when to plant it, and how to keep it alive through August.</p>
+        <div class="cta-row">
+          <a class="btn btn-buy" data-buy href="https://gumroad.com/">Get the ebook · <span data-price>$19</span></a>
+          <a class="btn btn-ghost" href="#inside">See what’s inside</a>
+        </div>
+        <div class="fine">
+          <span>Instant download</span><span>PDF + EPUB</span><span>Read on any device</span><span>14-day refund</span>
+        </div>
+      </div>
+
+      <div class="book-stage" aria-hidden="true">
+        <div class="book">
+          <div class="price-tag"><div><span data-price>$19</span><small>ebook</small></div></div>
+          <div class="cover">
+            <div class="cover-sun"></div>
+            <div class="cover-rail"></div>
+            <svg class="cover-plants" viewBox="0 0 200 110" preserveAspectRatio="xMidYMax meet">
+              <g fill="#5fae73"><path d="M30 92c-8-20-4-40 6-52 2 18 0 36-6 52z"/><path d="M34 92c6-18 18-30 32-34-8 14-18 26-32 34z"/><path d="M100 92c-4-26 2-50 14-66 2 24-4 46-14 66z"/><path d="M104 92c-12-14-28-20-40-20 10 10 24 18 40 20z"/><path d="M160 92c6-16 20-26 32-28-8 12-20 22-32 28z"/><path d="M158 92c-6-16-4-34 4-46 4 16 2 32-4 46z"/></g>
+              <g fill="#e05a6d"><circle cx="122" cy="40" r="6"/><circle cx="112" cy="58" r="5"/><circle cx="48" cy="56" r="4.5"/></g>
+              <g fill="#c96f3b"><path d="M16 92h40l-6 18H22z"/><path d="M84 92h44l-6 18H90z"/><path d="M146 92h40l-6 18h-28z"/></g>
+            </svg>
+            <div class="cover-top">
+              <div class="cover-kicker">Food from small spaces</div>
+              <div class="cover-title">The<br>Balcony<br>Harvest</div>
+            </div>
+            <div class="cover-bottom"><span>21 chapters · 40 plants</span><b>R. Linden</b></div>
+          </div>
+          <div class="book-pages"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>21</b><span>chapters in 4 parts</span></div>
+      <div class="stat"><b>40</b><span>plant profiles</span></div>
+      <div class="stat"><b>12</b><span>printable planners</span></div>
+      <div class="stat"><b>186</b><span>pages, fully illustrated</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Small-space growing goes wrong in the same three ways.</h2>
+      <p class="lede">None of them are your fault. They come from advice written for big gardens. Each one has a chapter that fixes it.</p>
+    </div>
+    <div class="pains">
+      <article class="pain">
+        <p class="pain-quote">“My tomatoes grew tall, then did nothing.”</p>
+        <p>Big varieties in small pots put everything into leaves. Picking the right variety matters more than any fertilizer.</p>
+        <p class="fix"><b>Fix</b>Chapter 7, Varieties Bred for Pots</p>
+      </article>
+      <article class="pain">
+        <p class="pain-quote">“I only get sun in the afternoon.”</p>
+        <p>Four hours of light is enough for more than you’d think. You just have to match each plant to the sun you actually get.</p>
+        <p class="fix"><b>Fix</b>Chapter 3, Mapping Your Light</p>
+      </article>
+      <article class="pain">
+        <p class="pain-quote">“Everything dies in the heat wave.”</p>
+        <p>Pots dry out up to three times faster than garden beds. A simple watering routine and the right pot size keep plants alive.</p>
+        <p class="fix"><b>Fix</b>Chapter 9, Water Without Worry</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="section band">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What you’ll be able to do</span>
+      <h2>By the end of one season, you’ll know your balcony like a farmer knows a field.</h2>
+    </div>
+    <div class="learn">
+      <div class="learn-item">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="20" r="7"/><path d="M20 4v5M20 31v5M4 20h5M31 20h5M8.7 8.7l3.5 3.5M27.8 27.8l3.5 3.5M8.7 31.3l3.5-3.5M27.8 12.2l3.5-3.5"/></svg>
+        <h3>Read your light</h3>
+        <p>Measure how many hours of sun each corner gets, then use that to choose what goes where.</p>
+      </div>
+      <div class="learn-item">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M7 16h26l-4 18H11z"/><path d="M5 16h30"/><path d="M20 16c0-6 3-10 8-11-1 5-4 9-8 11zM20 16c0-5-3-8-7-9 1 4 3 7 7 9z"/></svg>
+        <h3>Pick the right pots</h3>
+        <p>Know the minimum pot size for each crop in litres and gallons, so roots never run out of room.</p>
+      </div>
+      <div class="learn-item">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="28" height="26" rx="3"/><path d="M6 15h28M13 5v6M27 5v6M12 21h4M19 21h4M26 21h2M12 27h4M19 27h4"/></svg>
+        <h3>Plant on schedule</h3>
+        <p>Follow a week-by-week calendar that tells you when to sow, move and pick in your climate zone.</p>
+      </div>
+      <div class="learn-item">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5c6 8 10 13 10 18a10 10 0 0 1-20 0c0-5 4-10 10-18z"/><path d="M15 24a5 5 0 0 0 5 5"/></svg>
+        <h3>Water less, lose less</h3>
+        <p>Use self-watering setups and mulch so a long weekend away doesn’t cost you the crop.</p>
+      </div>
+      <div class="learn-item">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 32c14 0 24-10 24-24C18 8 8 18 8 32z"/><path d="M8 32 22 18"/></svg>
+        <h3>Feed your soil</h3>
+        <p>Mix your own potting soil and feed it with kitchen scraps, so you buy fewer bags each spring.</p>
+      </div>
+      <div class="learn-item">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30c4-2 6-6 6-10M14 30c4-2 6-8 6-14M22 30c4-2 6-10 6-18"/><path d="M4 34h32"/></svg>
+        <h3>Harvest all year</h3>
+        <p>Plan succession sowings and cold-hardy greens so there’s something to pick in every month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENTS -->
+<section class="section" id="inside">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What’s inside</span>
+      <h2>Four parts, from an empty balcony to a full one.</h2>
+      <p class="lede">Each chapter stands on its own and ends with a one-page checklist. If something is going wrong right now, skip straight to it.</p>
+    </div>
+
+    <div class="toc-grid">
+      <details class="part" open>
+        <summary><span class="part-num">I</span><span class="part-title"><h3>Start Small</h3><span>5 chapters · getting set up</span></span><span class="chev" aria-hidden="true">+</span></summary>
+        <ol>
+          <li><span class="n">01</span><span>What a Balcony Can Grow</span><span class="pg">p. 8</span></li>
+          <li><span class="n">02</span><span>Weight, Wind and Your Lease</span><span class="pg">p. 15</span></li>
+          <li><span class="n">03</span><span>Mapping Your Light</span><span class="pg">p. 22</span></li>
+          <li><span class="n">04</span><span>The Ten-Pot Starter Plan</span><span class="pg">p. 30</span></li>
+          <li><span class="n">05</span><span>Tools You Need (and the Ones You Don’t)</span><span class="pg">p. 37</span></li>
+        </ol>
+      </details>
+      <details class="part" open>
+        <summary><span class="part-num">II</span><span class="part-title"><h3>Soil, Pots and Water</h3><span>5 chapters · the foundations</span></span><span class="chev" aria-hidden="true">+</span></summary>
+        <ol>
+          <li><span class="n">06</span><span>Potting Mix You Can Make Yourself</span><span class="pg">p. 44</span></li>
+          <li><span class="n">07</span><span>Varieties Bred for Pots</span><span class="pg">p. 52</span></li>
+          <li><span class="n">08</span><span>Pot Sizes, Crop by Crop</span><span class="pg">p. 60</span></li>
+          <li><span class="n">09</span><span>Water Without Worry</span><span class="pg">p. 67</span></li>
+          <li><span class="n">10</span><span>Feeding: Compost, Worms and Tea</span><span class="pg">p. 75</span></li>
+        </ol>
+      </details>
+      <details class="part">
+        <summary><span class="part-num">III</span><span class="part-title"><h3>The Plants</h3><span>6 chapters · what to grow</span></span><span class="chev" aria-hidden="true">+</span></summary>
+        <ol>
+          <li><span class="n">11</span><span>Salad Greens on Repeat</span><span class="pg">p. 84</span></li>
+          <li><span class="n">12</span><span>Tomatoes, Peppers and Other Sun Lovers</span><span class="pg">p. 92</span></li>
+          <li><span class="n">13</span><span>Herbs That Pay for Themselves</span><span class="pg">p. 101</span></li>
+          <li><span class="n">14</span><span>Beans and Peas Up the Railing</span><span class="pg">p. 109</span></li>
+          <li><span class="n">15</span><span>Strawberries and Dwarf Fruit</span><span class="pg">p. 116</span></li>
+          <li><span class="n">16</span><span>Flowers That Bring the Bees</span><span class="pg">p. 124</span></li>
+        </ol>
+      </details>
+      <details class="part">
+        <summary><span class="part-num">IV</span><span class="part-title"><h3>Through the Year</h3><span>5 chapters · keeping it going</span></span><span class="chev" aria-hidden="true">+</span></summary>
+        <ol>
+          <li><span class="n">17</span><span>The Spring Rush</span><span class="pg">p. 132</span></li>
+          <li><span class="n">18</span><span>Surviving Summer Heat</span><span class="pg">p. 140</span></li>
+          <li><span class="n">19</span><span>Pests Without Sprays</span><span class="pg">p. 147</span></li>
+          <li><span class="n">20</span><span>Autumn Sowing for Winter Greens</span><span class="pg">p. 155</span></li>
+          <li><span class="n">21</span><span>Putting the Balcony to Bed</span><span class="pg">p. 162</span></li>
+        </ol>
+      </details>
+    </div>
+
+    <div class="extras">
+      <div class="extra"><b>40</b><h3>Plant profiles</h3><p>Sun, pot size, days to harvest and best varieties, one page each.</p></div>
+      <div class="extra"><b>12</b><h3>Printable planners</h3><p>Light map, sowing calendar, watering log and seed inventory.</p></div>
+      <div class="extra"><b>52</b><h3>Week calendar</h3><p>What to sow, move and pick each week, adjusted by climate zone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW -->
+<section class="section" id="preview" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Look inside</span>
+      <h2>Clean pages you can actually garden from.</h2>
+      <p class="lede">Big headings, short paragraphs and a checklist at the end of every chapter. Here are four sample spreads.</p>
+    </div>
+
+    <div class="preview-scroller" tabindex="0" aria-label="Sample pages, scroll sideways">
+      <div class="page-item">
+        <div class="page" aria-hidden="true">
+          <span class="pg-kicker">Part I · Chapter 3</span>
+          <span class="pg-h">Mapping<br>Your Light</span>
+          <div class="pg-lines"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pg-box"><b>Try this today</b><span>Photograph your balcony at 9am, 12pm, 3pm and 6pm. Shade the sunny patches on the light map.</span></div>
+          <div class="pg-lines"><i></i><i></i><i></i><i></i></div>
+          <div class="pg-foot"><span>The Balcony Harvest</span><span>22</span></div>
+        </div>
+        <div class="page-cap"><b>Chapter openers</b><span>Every chapter starts with one task you can do today.</span></div>
+      </div>
+
+      <div class="page-item">
+        <div class="page" aria-hidden="true">
+          <span class="pg-kicker">Plant profile · 14 of 40</span>
+          <span class="pg-h">Cherry<br>Tomato</span>
+          <dl class="pg-table">
+            <dt>Sun</dt><dd>6+ hours</dd>
+            <dt>Pot</dt><dd>20 L / 5 gal min.</dd>
+            <dt>Sow</dt><dd>6 weeks before last frost</dd>
+            <dt>Harvest</dt><dd>60–75 days from transplant</dd>
+            <dt>Try</dt><dd>‘Tumbling Tom’, ‘Micro Tom’</dd>
+          </dl>
+          <div class="pg-lines"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pg-foot"><span>Plant profiles</span><span>171</span></div>
+        </div>
+        <div class="page-cap"><b>40 plant profiles</b><span>Everything you need for one crop on one page.</span></div>
+      </div>
+
+      <div class="page-item">
+        <div class="page" aria-hidden="true">
+          <span class="pg-kicker">Planner · Spring</span>
+          <span class="pg-h2">Sowing calendar, zones 6–7</span>
+          <div class="pg-cal">
+            <div><b>MAR 1</b><i class="dot-sow"></i></div><div><b>MAR 2</b><i class="dot-sow"></i><i class="dot-sow"></i></div><div><b>MAR 3</b><i class="dot-sow"></i></div><div><b>MAR 4</b></div>
+            <div><b>APR 1</b><i class="dot-move"></i></div><div><b>APR 2</b><i class="dot-sow"></i><i class="dot-move"></i></div><div><b>APR 3</b><i class="dot-pick"></i></div><div><b>APR 4</b><i class="dot-move"></i></div>
+            <div><b>MAY 1</b><i class="dot-move"></i><i class="dot-pick"></i></div><div><b>MAY 2</b><i class="dot-pick"></i></div><div><b>MAY 3</b><i class="dot-sow"></i><i class="dot-pick"></i></div><div><b>MAY 4</b><i class="dot-pick"></i></div>
+          </div>
+          <div class="pg-legend"><span><i class="dot-sow"></i>Sow</span><span><i class="dot-move"></i>Move out</span><span><i class="dot-pick"></i>Pick</span></div>
+          <div class="pg-lines"><i></i><i></i><i></i></div>
+          <div class="pg-foot"><span>Printable planner 4</span><span>179</span></div>
+        </div>
+        <div class="page-cap"><b>Printable planners</b><span>Print as many copies as you like.</span></div>
+      </div>
+
+      <div class="page-item">
+        <div class="page" aria-hidden="true">
+          <span class="pg-kicker">Chapter 18 · Checklist</span>
+          <span class="pg-h2">Before the heat wave</span>
+          <div class="pg-check">
+            <span>Move pots off the hot floor</span>
+            <span>Add 5 cm of mulch to every pot</span>
+            <span>Fill self-watering reservoirs</span>
+            <span>Hang shade cloth over lettuce</span>
+            <span>Pick everything that’s ripe</span>
+            <span>Group small pots together</span>
+          </div>
+          <div class="pg-lines"><i></i><i></i><i></i></div>
+          <div class="pg-foot"><span>Surviving Summer Heat</span><span>146</span></div>
+        </div>
+        <div class="page-cap"><b>End-of-chapter checklists</b><span>The whole chapter, boiled down to one page.</span></div>
+      </div>
+    </div>
+    <p class="scroll-hint">Scroll sideways for more pages →</p>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Is it for you?</span>
+      <h2>Written for renters, beginners and anyone short on space.</h2>
+    </div>
+    <div class="fit">
+      <div class="fit-col fit-yes">
+        <h3>You’ll love it if you…</h3>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>have a balcony, patio, rooftop or a sunny windowsill</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>have never grown food before, or tried and gave up</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>rent, and can’t dig, drill or build anything permanent</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>want a plan for the whole year, not just spring</span></li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <h3>It’s probably not for you if you…</h3>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m5 5 10 10M15 5 5 15"/></svg><span>already run a large in-ground vegetable garden</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m5 5 10 10M15 5 5 15"/></svg><span>want an indoor hydroponics or grow-light setup</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m5 5 10 10M15 5 5 15"/></svg><span>need a printed hardcover (it’s digital only, for now)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="section" id="author" style="padding-top:0">
+  <div class="wrap">
+    <div class="author">
+      <div class="portrait"><span>RL</span><small>Replace with your photo</small></div>
+      <div class="author-copy">
+        <span class="eyebrow">Meet the author</span>
+        <h2>Hi, I’m R. Linden.</h2>
+        <p>I started growing on a third-floor balcony with two cracked pots and a packet of basil seeds. Eight years and five apartments later, that same kind of space feeds me salad from April to November and more tomatoes than my neighbours know what to do with.</p>
+        <p>I wrote this book because every guide I read assumed I had a backyard. Everything in it has been tested in real pots, on real balconies, by someone who has killed a lot of plants along the way.</p>
+        <p class="pull">“You don’t need more space. You need the right plants in the right pots, at the right time.”</p>
+        <div class="socials">
+          <a href="#" rel="noopener">YouTube</a>
+          <a href="#" rel="noopener">Instagram</a>
+          <a href="#" rel="noopener">Newsletter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY -->
+<section class="section band" id="buy">
+  <div class="wrap">
+    <div class="buy-wrap">
+      <div class="stack">
+        <span class="eyebrow">Get your copy</span>
+        <h2>One payment. Yours to keep, re-read and print from.</h2>
+        <p class="lede">Your download link arrives by email right after checkout. Payments are handled securely by Gumroad, by card or PayPal.</p>
+        <div class="formats"><span>PDF · US LETTER</span><span>PDF · A4</span><span>EPUB</span><span>KINDLE-READY</span></div>
+      </div>
+      <div class="buy-card">
+        <div class="buy-price"><b data-price>$19</b><span>USD, one time</span></div>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>186-page ebook, 21 chapters in 4 parts</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>40 one-page plant profiles</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>12 printable planners and checklists</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>52-week sowing calendar by climate zone</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 10 4 4 8-8"/></svg><span>Free updates to future editions</span></li>
+        </ul>
+        <a class="btn btn-buy" data-buy href="https://gumroad.com/">Buy the ebook · <span data-price>$19</span></a>
+        <div class="guarantee">
+          <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M22 4 37 10v11c0 9-6.5 16-15 19C13.5 37 7 30 7 21V10z"/><path d="m15 22 5 5 9-10" stroke-linecap="round"/></svg>
+          <p><b>14-day refund.</b> If the book isn’t useful to you, email <span data-email>hello@example.com</span> within 14 days for a full refund. No questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="faq">
+      <div class="stack">
+        <span class="eyebrow">Questions</span>
+        <h2>Before you buy</h2>
+        <p class="lede">Something else on your mind? Email <span data-email>hello@example.com</span> and you’ll get a reply within two working days.</p>
+      </div>
+      <div class="faq-list">
+        <details open><summary>Is this a printed book?</summary><p>No. It’s an ebook you download right after you buy, as a PDF and an EPUB. You can print any page you like, including all 12 planners.</p></details>
+        <details><summary>Can I read it on my phone or Kindle?</summary><p>Yes. The EPUB adjusts to any screen and works on Kindle, Apple Books, Kobo and Google Play Books. The PDF is best for tablets, computers and printing.</p></details>
+        <details><summary>Will it work in my climate?</summary><p>The calendar covers climate zones 3 to 10, with notes for hot-summer and mild-winter regions. Every plant profile lists the temperature range it needs.</p></details>
+        <details><summary>How much space do I really need?</summary><p>The starter plan uses ten pots on about 2 square metres (20 square feet). A sunny windowsill is enough for the herb chapter.</p></details>
+        <details><summary>What if I don’t like it?</summary><p>Email within 14 days of buying and you’ll get a full refund. You don’t need to give a reason.</p></details>
+        <details><summary>Do I get future updates?</summary><p>Yes. When a new edition comes out, you’ll get it free at the same email address you used to buy.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE SAMPLE -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="sample">
+      <div class="stack">
+        <span class="eyebrow">Not sure yet?</span>
+        <h2>Read Chapter 3 for free.</h2>
+        <p>Get “Mapping Your Light” and the printable light map by email. It takes 15 minutes and tells you exactly what your balcony can grow.</p>
+      </div>
+      <form class="signup" id="signup" novalidate>
+        <label for="signup-email" class="eyebrow">Your email</label>
+        <div class="signup-row">
+          <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="btn btn-buy" type="submit">Send me Chapter 3</button>
+        </div>
+        <p class="note" id="signup-note" aria-live="polite">One email with the chapter, then an occasional growing tip. Unsubscribe any time.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> R. Linden · The Balcony Harvest</span>
+    <nav aria-label="Footer">
+      <a href="#inside">What’s inside</a>
+      <a href="#faq">FAQ</a>
+      <a data-buy href="https://gumroad.com/">Buy the ebook</a>
+      <a href="#top">Back to top ↑</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="Quick buy">
+  <div><b>The Balcony Harvest</b><span>Ebook · PDF + EPUB</span></div>
+  <a class="btn btn-buy" data-buy href="https://gumroad.com/">Buy · <span data-price>$19</span></a>
+</div>
+
+<script>
+/* ===== EDIT THESE: your book's settings ===== */
+const BOOK = {
+  price: "$19",                         // shown everywhere a price appears
+  buyUrl: "https://gumroad.com/",       // your Gumroad / Payhip / Lemon Squeezy / Amazon link
+  email: "hello@example.com",           // support + refund email
+  signupEndpoint: ""                    // optional: form URL from Mailchimp, ConvertKit, Formspree…
+};
+/* ============================================ */
+
+document.querySelectorAll("[data-price]").forEach(el => { el.textContent = BOOK.price; });
+document.querySelectorAll("[data-buy]").forEach(a => { a.href = BOOK.buyUrl; a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll("[data-email]").forEach(el => { el.textContent = BOOK.email; });
+const y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
+
+const form = document.getElementById("signup");
+const note = document.getElementById("signup-note");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = form.email.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    note.textContent = "Please enter a valid email address, like name@example.com.";
+    form.email.focus();
+    return;
+  }
+  if (!BOOK.signupEndpoint) {
+    note.textContent = "Signup isn’t connected yet. Add your email provider’s form URL to BOOK.signupEndpoint.";
+    return;
+  }
+  note.textContent = "Sending…";
+  try {
+    const res = await fetch(BOOK.signupEndpoint, { method: "POST", headers: { "Accept": "application/json" }, body: new FormData(form) });
+    if (!res.ok) throw new Error(res.status);
+    form.reset();
+    note.textContent = "Done. Check your inbox for Chapter 3.";
+  } catch (err) {
+    note.textContent = "That didn’t go through. Check your connection and try again.";
+  }
+});
+</script>
+</body>
+</html>
