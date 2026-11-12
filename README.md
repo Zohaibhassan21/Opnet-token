@@ -10,7 +10,7 @@ Buy link (Gumroad): https://zohaibh0.gumroad.com/l/cart-for-one
 At the bottom of `index.html`:
 
 ```js
-const BOOK = {
+const SITE = {
   price: "$19",
   buyUrl: "https://zohaibh0.gumroad.com/l/cart-for-one",
   youtubeUrl: "https://www.youtube.com/..."   // your channel link
