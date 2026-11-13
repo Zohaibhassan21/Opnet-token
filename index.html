@@ -174,6 +174,15 @@ p{margin:0}
 .lesson{font:700 1.25rem/1.4 var(--f-display);border-left:4px solid var(--mustard);padding-left:18px;font-variation-settings:"SOFT" 100}
 .small-note{font-size:.88rem;color:var(--muted)}
 .rx[hidden]{display:none!important}
+.cover-flat{max-width:320px;width:100%;justify-self:center;transform:rotate(-3deg);border-radius:4px 10px 10px 4px;overflow:hidden;box-shadow:24px 28px 50px -20px rgba(30,20,10,.5)}
+.cover-flat img{width:100%;height:auto}
+@keyframes bookIn{from{opacity:0;transform:translateY(70px) rotate(-8deg) scale(.9)}to{opacity:1;transform:none}}
+@keyframes tagPop{0%{opacity:0;transform:scale(.2) rotate(-40deg) translateZ(30px)}70%{opacity:1;transform:scale(1.12) rotate(16deg) translateZ(30px)}100%{opacity:1;transform:scale(1) rotate(10deg) translateZ(30px)}}
+.hero .book-in{animation:bookIn 1.2s cubic-bezier(.2,.8,.2,1) .3s both}
+.hero .price-tag{animation:tagPop .8s cubic-bezier(.3,1.4,.5,1) 1.25s both}
+@media (max-width:980px){.hero .book-stage{order:-1}}
+@media (prefers-reduced-motion:reduce){.hero .book-in,.hero .price-tag{animation:none!important}}
+
 
 /* Rules */
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -399,25 +408,14 @@ p{margin:0}
         <div class="fine"><span>Real stores, real prices</span><span>New video every week</span><span>For anyone shopping for one</span></div>
       </div>
 
-      <div class="printer" role="img" aria-label="Bev's Walmart receipt: 12 things for $35.13">
-        <div class="receipt">
-          <div class="r-head"><b>WALMART · CART FOR ONE</b><span>Episode 1 · prices checked Nov 2026</span></div>
-          <div class="r-row" style="--n:1"><span>Yellow onions, 3 lb</span><span class="p">2.84</span></div>
-          <div class="r-row" style="--n:2"><span>Rotisserie chicken</span><span class="p">5.97</span></div>
-          <div class="r-row" style="--n:3"><span>Flour tortillas, 10 ct</span><span class="p">1.98</span></div>
-          <div class="r-row" style="--n:4"><span>Greek yogurt, 32 oz</span><span class="p">3.28</span></div>
-          <div class="r-row" style="--n:5"><span>Eggs, dozen</span><span class="p">1.67</span></div>
-          <div class="r-row" style="--n:6"><span>Frozen broccoli</span><span class="p">1.16</span></div>
-          <div class="r-row" style="--n:7"><span>Tuna, 4 cans</span><span class="p">3.84</span></div>
-          <div class="r-row" style="--n:8"><span>Spaghetti, 1 lb</span><span class="p">0.98</span></div>
-          <div class="r-row" style="--n:9"><span>Peanut butter</span><span class="p">1.98</span></div>
-          <div class="r-row" style="--n:10"><span>Freezer bags, 50</span><span class="p">2.82</span></div>
-          <div class="r-row" style="--n:11"><span>Night lights, 4-pack</span><span class="p">7.94</span></div>
-          <div class="r-row" style="--n:12"><span>Corn muffin mix</span><span class="p">0.67</span></div>
-          <div class="r-total" style="--n:13"><span>TOTAL · 12 ITEMS</span><span>$35.13</span></div>
-          <div class="r-foot" style="--n:14"><b>SHOP FOR ONE, WASTE NONE.</b>Put back: 4 things · saved $7.70</div>
-        </div>
-        <div class="stamp" aria-hidden="true"><div>CART<br>FOR ONE<small>WITH BEV</small></div></div>
+      <div class="book-stage" aria-hidden="true">
+        <div class="book-in"><div class="book-float">
+          <div class="book">
+            <div class="price-tag"><div><span data-price>$19</span><small>ebook</small></div></div>
+            <div class="cover"><img src="assets/cover.jpg" alt="" width="900" height="1164"></div>
+            <div class="book-pages"></div>
+          </div>
+        </div><div class="book-shadow"></div></div>
       </div>
     </div>
 
@@ -624,15 +622,7 @@ p{margin:0}
 <section class="section" id="book">
   <div class="wrap">
     <div class="book-wrap">
-      <div class="book-stage" aria-hidden="true">
-        <div class="book-in"><div class="book-float">
-          <div class="book">
-            <div class="price-tag"><div><span data-price>$19</span><small>ebook</small></div></div>
-            <div class="cover"><img src="assets/cover.jpg" alt="" width="900" height="1164" loading="lazy"></div>
-            <div class="book-pages"></div>
-          </div>
-        </div><div class="book-shadow"></div></div>
-      </div>
+      <div class="cover-flat"><img src="assets/cover.jpg" alt="Cart for One ebook cover" width="900" height="1164" loading="lazy"></div>
       <div class="stack">
         <span class="eyebrow">The book</span>
         <h2>Everything from the channel, in one book you can keep.</h2>
@@ -832,7 +822,7 @@ addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
 if (!reduce) {
   // 3D book tilt with glare
-  const sec = document.getElementById("book");
+  const sec = document.querySelector(".hero");
   const stage = document.querySelector(".book-stage");
   const book = document.querySelector(".book");
   const cover = document.querySelector(".cover");
@@ -872,7 +862,7 @@ if (!reduce) {
       io.unobserve(el);
     }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
 
-    document.querySelectorAll(".section .head, .ep, .tabs, #rx-walmart, .rule, .err, .err-ask, .book-stage, #book .stack, .who > div, .stores, .card-id, .author-copy, .faq > .stack, .faq-list details, .sub")
+    document.querySelectorAll(".section .head, .ep, .tabs, #rx-walmart, .rule, .err, .err-ask, .cover-flat, #book .stack, .who > div, .stores, .card-id, .author-copy, .faq > .stack, .faq-list details, .sub")
       .forEach(el => {
         if (el.getBoundingClientRect().top < innerHeight * 0.92) return;
         const idx = [...el.parentElement.children].indexOf(el);
