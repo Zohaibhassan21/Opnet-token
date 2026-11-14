@@ -183,10 +183,18 @@ p{margin:0}
 .fit-no svg{color:var(--muted)}
 
 /* Bev */
-.author{display:grid;grid-template-columns:280px 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.author{display:grid;grid-template-columns:330px 1fr;gap:clamp(28px,5vw,64px);align-items:start}
 .portrait{aspect-ratio:4/5;border-radius:22px;background:var(--mustard);display:flex;flex-direction:column;justify-content:space-between;padding:24px;position:relative;overflow:hidden;max-width:100%}
 .portrait .big{font:900 6rem/1 var(--f-display);font-variation-settings:"SOFT" 100,"WONK" 1}
 .portrait .note{font:600 .72rem/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;padding:10px 12px;border-radius:10px}
+.bev-card{background:#fffdf7;border-radius:20px;box-shadow:var(--shadow);overflow:hidden;font:400 .9rem/1.5 var(--f-mono);max-width:100%}
+.bev-photo{position:relative;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:16px}
+.bev-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.bev-photo .note{position:relative;z-index:1;font:600 .68rem/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;padding:8px 10px;border-radius:8px}
+.bev-card dl{margin:0;padding:16px 20px 20px;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;border-top:4px solid var(--mustard)}
+.bev-card dt{color:var(--muted);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+.bev-card dd{margin:0;color:var(--ink)}
+@media (max-width:760px){.bev-card{max-width:340px}}
 .author-copy{display:flex;flex-direction:column;gap:18px;max-width:64ch;min-width:0}
 .author-copy p{color:var(--muted)}
 .pull{font:800 1.4rem/1.35 var(--f-display);color:var(--ink)!important;border-left:4px solid var(--mustard);padding-left:20px;font-variation-settings:"SOFT" 100}
@@ -624,12 +632,24 @@ p{margin:0}
 <section class="section" id="bev" style="padding-top:0">
   <div class="wrap">
     <div class="author">
-      <div class="portrait"><img src="assets/bev.jpg" alt="Bev at her kitchen table" width="640" height="800" loading="lazy"><span class="note">Host of Cart for One with Bev on YouTube</span></div>
+      <div class="bev-card">
+        <div class="bev-photo"><img src="assets/bev.jpg" alt="Bev at her kitchen table" width="640" height="800" loading="lazy"><span class="note">Host of Cart for One with Bev on YouTube</span></div>
+        <dl>
+          <dt>Age</dt><dd>72</dd>
+          <dt>Home</dt><dd>A small house in Indiana</dd>
+          <dt>Shops for</dt><dd>One (and a terrier)</dd>
+          <dt>Dog</dt><dd>Pepper, small and old</dd>
+          <dt>Neighbor</dt><dd>Gus, 80, across the street</dd>
+          <dt>Calls</dt><dd>Carol in Arizona, Sundays</dd>
+          <dt>Carries</dt><dd>A spiral notebook of prices</dd>
+        </dl>
+      </div>
       <div class="author-copy">
         <span class="eyebrow">Meet Bev</span>
         <h2>From the kitchen table, with a spiral notebook.</h2>
-        <p>Bev is the host of our YouTube channel. Every week she walks through a store or a kitchen topic for people who shop for one, adds up the receipt, and tells you what she put back. This book gathers everything from those videos into one place you can keep, print and come back to.</p>
-        <p class="pull">“You don’t have to read it front to back. Pick the chapter that’s costing you money right now and start there.”</p>
+        <p>Six years ago Bev was still shopping for two and throwing half away. Half a loaf gone green, half a bag of salad gone to soup in the drawer. So she started writing every price down, working out what things cost per use, and learning how to fill a cart for one.</p>
+        <p>Now she takes that notebook to a different store every week on YouTube. She'll tell you plainly when the small package is the smarter buy, when your hands deserve the easier one, and why the cheapest thing in her cart is usually the one she'd give up last. This book gathers all of it into one place you can keep, print and come back to.</p>
+        <p class="pull">“I'm Bev. Let's get a cart.”</p>
         <p class="small-note">The tips and safety facts in the book are real, and every source is listed at the back.</p>
       </div>
     </div>
@@ -812,7 +832,7 @@ if (!reduce) {
       io.unobserve(el);
     }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
 
-    document.querySelectorAll(".section .head, .pain, .part-card, .part, .extra, .fit-col, .get-card, .feat > div, .ep, .portrait, .author-copy, .buy-wrap > .stack, .buy-card, .faq > .stack, .faq-list details, .yt")
+    document.querySelectorAll(".section .head, .pain, .part-card, .part, .extra, .fit-col, .get-card, .feat > div, .ep, .bev-card, .author-copy, .buy-wrap > .stack, .buy-card, .faq > .stack, .faq-list details, .yt")
       .forEach(el => {
         if (el.getBoundingClientRect().top < innerHeight * 0.92) return;
         const idx = [...el.parentElement.children].indexOf(el);
