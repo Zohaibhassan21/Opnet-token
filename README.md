@@ -3,7 +3,7 @@
 The home page for the YouTube channel *Cart for One with Bev*: episodes, Bev's receipts, her rules, the weekly errands and the **Cart for One** ebook. It's a single `index.html` file with images in `assets/`. There's no build step, so it can be hosted anywhere for free.
 
 Live site (GitHub Pages): https://zohaibhassan21.github.io/Opnet-token/
-Buy link (Gumroad): https://zohaibh0.gumroad.com/l/cart-for-one
+Buy link (Gumroad): https://cartforonewithbev.gumroad.com/l/cart-for-one
 
 ## Change price, buy link or YouTube link
 
@@ -12,7 +12,7 @@ At the bottom of `index.html`:
 ```js
 const SITE = {
   price: "$19",
-  buyUrl: "https://zohaibh0.gumroad.com/l/cart-for-one",
+  buyUrl: "https://cartforonewithbev.gumroad.com/l/cart-for-one",
   youtubeUrl: "https://www.youtube.com/..."   // your channel link
 };
 ```
